@@ -24,6 +24,24 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <nav>
+        <%= link_to "L6 ショップ", root_path, class: "brand" %>
+        <%= link_to "商品一覧", products_path %>
+        <%= link_to "商品登録", new_product_path %>
+        <%= link_to "カート（#{@cart.total_qty}点）", cart_path %>
+      </nav>
+    </header>
+
+    <main>
+      <% if notice %>
+        <p class="notice"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+        <p class="alert"><%= alert %></p>
+      <% end %>
+
+      <%= yield %>
+    </main>
   </body>
 </html>

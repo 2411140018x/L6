@@ -9,6 +9,14 @@ Rails.application.routes.draw do
   # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
-  # Defines the root path route ("/")
-  # root "posts#index"
+  # 商品：一覧・登録・削除
+  resources :products, only: [ :index, :new, :create, :destroy ]
+
+  # ショッピングカート：内容表示（カートはセッションで1つだけなので単数形リソース）
+  resource :cart, only: [ :show ]
+
+  # カートの中身：追加・削除
+  resources :cart_items, only: [ :create, :destroy ]
+
+  root "products#index"
 end
