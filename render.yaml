@@ -1,10 +1,4 @@
-databases:
-  - name: l6-db
-    databaseName: l6
-    user: l6
-    plan: free
-    region: oregon
-
+# DBは既存の無料PostgreSQL「mysite」を使う（無料DBはワークスペースに1つまでのため）
 services:
   - type: web
     name: L6
@@ -16,7 +10,7 @@ services:
     envVars:
       - key: DATABASE_URL
         fromDatabase:
-          name: l6-db
+          name: mysite
           property: connectionString
       - key: SECRET_KEY_BASE
         generateValue: true
