@@ -5,7 +5,7 @@
 <% if @products.empty? %>
   <p>登録されている商品はありません。</p>
 <% else %>
-  <table>
+  <table border="1">
     <thead>
       <tr>
         <th>商品名</th>
@@ -18,11 +18,11 @@
       <% @products.each do |product| %>
         <tr>
           <td><%= product.name %></td>
-          <td class="num"><%= yen(product.price) %></td>
+          <td><%= yen(product.price) %></td>
           <td>
-            <%= form_with url: cart_items_path, class: "inline" do |f| %>
+            <%= form_with url: cart_items_path do |f| %>
               <%= f.hidden_field :product_id, value: product.id %>
-              <%= f.number_field :qty, value: 1, min: 1, class: "qty" %>
+              <%= f.number_field :qty, value: 1, min: 1 %>
               <%= f.submit "カートに入れる" %>
             <% end %>
           </td>

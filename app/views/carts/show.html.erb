@@ -3,7 +3,7 @@
 <% if @cart_items.empty? %>
   <p>カートに商品は入っていません。</p>
 <% else %>
-  <table>
+  <table border="1">
     <thead>
       <tr>
         <th>商品名</th>
@@ -17,9 +17,9 @@
       <% @cart_items.each do |item| %>
         <tr>
           <td><%= item.product.name %></td>
-          <td class="num"><%= yen(item.product.price) %></td>
-          <td class="num"><%= item.qty %></td>
-          <td class="num"><%= yen(item.subtotal) %></td>
+          <td><%= yen(item.product.price) %></td>
+          <td><%= item.qty %></td>
+          <td><%= yen(item.subtotal) %></td>
           <td><%= button_to "削除", cart_item_path(item), method: :delete %></td>
         </tr>
       <% end %>
@@ -27,8 +27,8 @@
     <tfoot>
       <tr>
         <th colspan="2">合計</th>
-        <th class="num"><%= @cart.total_qty %></th>
-        <th class="num"><%= yen(@cart.total_price) %></th>
+        <th><%= @cart.total_qty %></th>
+        <th><%= yen(@cart.total_price) %></th>
         <th></th>
       </tr>
     </tfoot>

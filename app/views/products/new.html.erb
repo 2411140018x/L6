@@ -1,7 +1,7 @@
 <h1>商品登録</h1>
 
 <% if @product.errors.any? %>
-  <ul class="errors">
+  <ul>
     <% @product.errors.each do |error| %>
       <li><%= error.message %></li>
     <% end %>
